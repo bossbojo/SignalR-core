@@ -4,10 +4,6 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
   <PropertyGroup>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <DocumentationFile>bin\WebApi.XML</DocumentationFile>
