@@ -39,7 +39,7 @@ namespace WebApi
             StaticVariables.ENV = env.EnvironmentName;
 
             StaticVariables.ConnectionString = Configuration.GetConnectionString("ConnectionDB");
-            
+
         }
         public IConfiguration Configuration { get; }
 
@@ -64,6 +64,7 @@ namespace WebApi
         {
             if (env.IsDevelopment()) //Is Development mode
             {
+                Swagger.StartUpSwaggerConfigure(app);
                 app.UseDeveloperExceptionPage();
             }
             else if (env.IsProduction()) //Is Production mode
@@ -74,8 +75,7 @@ namespace WebApi
             {
                 app.UseHsts();
             }
-            
-            Swagger.StartUpSwaggerConfigure(app);
+
 
             DefaultFiles.DefaultFilesConfigure(app, env);
             SignalRMapHub.SignalRMapHubConfigure(app);
