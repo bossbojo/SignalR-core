@@ -62,6 +62,7 @@ namespace WebApi
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors("CorsPolicy");
             if (env.IsDevelopment()) //Is Development mode
             {
                 Swagger.StartUpSwaggerConfigure(app);
@@ -75,13 +76,12 @@ namespace WebApi
             {
                 app.UseHsts();
             }
+            app.UseAuthentication();
 
 
             DefaultFiles.DefaultFilesConfigure(app, env);
             SignalRMapHub.SignalRMapHubConfigure(app);
 
-            app.UseAuthentication();
-            app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
             app.UseMvc();
         }
